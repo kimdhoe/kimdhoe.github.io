@@ -1,54 +1,92 @@
 import React from 'react'
-import { css } from 'react-emotion'
 import { Link, graphql } from 'gatsby'
-import { rhythm } from '../utils/typography'
+import styled from 'styled-components'
+
 import Layout from '../components/layout'
 
 export default ({ data }) => (
-	<Layout>
-    <h1
-      className={css`
-        displat: inline-block;
-        border-bottom: 1px solid;
-      `}>
-      Amazing Pandas Eating Things
-    </h1>
-    <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+  <Layout>
     {data.allMarkdownRemark.edges.map(({ node }) => (
-      <div key={node.id}>
-        <Link
-          to={node.fields.slug}
-          className={css`
-            text-decoration: none;
-            color: inherit;
-          `}
-        >
-          <h3
-            className={css`
-              margin-bottom: ${rhythm(1 / 4)};
-            `}
-          >
-            {node.frontmatter.title}{" "}
-            <span
-              className={css`
-                color: #bbb;
-              `}
-            >
-              - {node.frontmatter.date}
-            </span>
-          </h3>
-          <p>{node.excerpt}</p>
-        </Link>
-      </div>
+      <Entry
+        key={node.id}
+        slug={node.fields.slug}
+        title={node.frontmatter.title}
+        date={node.frontmatter.date}
+        excerpt={node.frontmatter.excerpt}
+        tags={node.frontmatter.tags}
+      />
     ))}
-		<div>
-			<img
-				src="https://2.bp.blogspot.com/-BMP2l6Hwvp4/TiAxeGx4CTI/AAAAAAAAD_M/XlC_mY3SoEw/s1600/panda-group-eating-bamboo.jpg"
-				alt="Group of pandas eating bamboo"
-			/>
-		</div>
-	</Layout>
+  </Layout>
 )
+
+const Tags = ({ tags }) => (
+  <div>
+    {tags.map(tag => (
+      <span key={tag}>{tag}</span>
+    ))}
+  </div>
+);
+
+const Entry = ({ title, date, excerpt, tags, slug }) => (
+  <StyledEntry>
+    <StyledLink to={slug}>
+      <StyledDate>
+        <Bullet />
+        {date}
+      </StyledDate>
+      <StyledContent>
+        <Title>{title}</Title>
+        <Excerpt>{excerpt}</Excerpt>
+        <Tags tags={tags || []} />
+      </StyledContent>
+    </StyledLink>
+  </StyledEntry>
+)
+
+const StyledEntry = styled.div`
+margin-bottom: 2em;
+`
+
+const StyledLink = styled(Link)`
+font-style: normal;
+text-decoration: none;
+color: #333;
+`
+
+const Bullet = styled.span`
+display: inline-block;
+margin-left: -0.3em;
+margin-right: 1.424em;
+width: 9px;
+height: 9px;
+border-radius: 25%;
+transform: rotate(45deg);
+border: 1px solid #888; 
+
+${StyledLink}:hover & {
+  background-color: #888;
+}
+`
+
+const StyledContent = styled.div`
+padding-left: 1.424em;
+border-left: 1px dashed #888; 
+`
+
+const StyledDate = styled.p`
+margin: 0;
+font-size: 0.8em;
+color: #888;
+`
+
+const Title = styled.h2`
+margin-top: 0.3em;
+margin-bottom: 0.2em;
+`
+
+const Excerpt = styled.p`
+margin: 0;
+`
 
 export const query = graphql`
 query {
@@ -60,11 +98,12 @@ query {
         frontmatter {
           title
           date(formatString: "DD MMMM, YYYY")
+          excerpt
+          tags
         }
         fields {
           slug
         }
-        excerpt
       }
     }
   }

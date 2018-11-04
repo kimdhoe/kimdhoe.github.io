@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Pandas Eating Lots',
+    title: 'dhk.party',
   },
   plugins: [
     {
@@ -10,13 +10,16 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    'gatsby-transformer-remark',
-    'gatsby-plugin-emotion',
     {
-      resolve: 'gatsby-plugin-typography',
+      resolve: 'gatsby-transformer-remark',
       options: {
-        pathToConfigModule: 'src/utils/typography.js'
+        plugins: [
+          {
+            resolve: 'gatsby-remark-prismjs',
+          }
+        ]
       }
-    }
+    },
+    'gatsby-plugin-styled-components',
   ]
 }

@@ -1,8 +1,12 @@
 import React from 'react'
-import { css } from 'react-emotion'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 
-import { rhythm } from '../utils/typography'
+import Header from './header';
+import Footer from './footer';
+
+import 'sanitize.css'
+import '../styles/typography.css'
 
 export default ({ children }) => (
   <StaticQuery
@@ -16,35 +20,19 @@ export default ({ children }) => (
       }
     `}
     render={data => (
-      <div
-        className={css`
-          margin: 0 auto;
-          max-width: 700px;
-          padding: ${rhythm(2)};
-          padding-top: ${rhythm(1.5)};
-        `}
-      >
-        <Link to="/">
-          <h3
-            className={css`
-              margin-bottom: ${rhythm(2)};
-              display: inline-block;
-              font-style: normal;
-            `}
-          >
-            {data.site.siteMetadata.title}
-          </h3>
-        </Link>
-        <Link
-          to="/about"
-          className={css`
-            float: right;
-          `}
-        >
-          About
-        </Link>
+      <Container>
+        <Header title={data.site.siteMetadata.title} />
+
         {children}
-      </div>
+
+        <Footer />
+      </Container>
     )}
   />
 )
+
+const Container = styled.div`
+margin: 0 auto;
+padding: 1em;
+max-width: 760px;
+`

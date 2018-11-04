@@ -2,13 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 
-export default ({ data }) => {
-  const post = data.markdownRemark
-
+export default ({ data: { markdownRemark: { frontmatter, html } } }) => {
   return (
     <Layout>
-      <h1>{post.frontmatter.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <h2>{frontmatter.title}</h2>
+      <p>{frontmatter.date}</p>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )
 }
@@ -19,6 +18,7 @@ query($slug: String!) {
     html
     frontmatter {
       title
+      date(formatString: "DD MMMM, YYYY")
     }
   }
 }

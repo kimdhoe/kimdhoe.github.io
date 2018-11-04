@@ -15,35 +15,30 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-
-  return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        allMarkdownRemark {
-          edges {
-            node {
-              fields {
-                slug
-              }
+  const { data } = await graphql(`
+    {
+      allMarkdownRemark {
+        edges {
+          node {
+            excerpt
+            fields {
+              slug
             }
           }
         }
       }
-    `)
-      .then(result => {
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-          createPage({
-            path: node.fields.slug,
-            component: path.resolve('./src/templates/blog-post.js'),
-            context: {
-              slug: node.fields.slug,
-            }
-          })
-        })
+    }
+  `)
 
-        resolve()
-      })
+  data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: path.resolve('./src/templates/blog-post.js'),
+      context: {
+        slug: node.fields.slug,
+      }
+    })
   })
 }
