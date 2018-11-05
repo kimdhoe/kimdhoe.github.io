@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import { css } from 'glamor'
 
 export default () => (
-  <StyledFooter>
+  <footer className={__Footer}>
     <p><small>kimdhoe1@gmail.com</small></p>
-  </StyledFooter>
+  </footer>
 )
 
-const StyledFooter = styled.footer`
-text-align: center;
-`
+const __Footer =  css({
+  textAlign: 'center',
+})

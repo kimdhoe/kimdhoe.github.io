@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { css } from 'glamor';
 
 import Header from './header';
 import Footer from './footer';
@@ -20,19 +20,19 @@ export default ({ children }) => (
       }
     `}
     render={data => (
-      <Container>
+      <div className={__Container}>
         <Header title={data.site.siteMetadata.title} />
 
         {children}
 
         <Footer />
-      </Container>
+      </div>
     )}
   />
 )
 
-const Container = styled.div`
-margin: 0 auto;
-padding: 1em;
-max-width: 760px;
-`
+const __Container = css({
+  margin: '0 auto',
+  padding: '1em',
+  maxWidth: '760px',
+})

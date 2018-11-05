@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { css } from 'glamor'
 
 import Layout from '../components/layout'
 
@@ -19,74 +19,113 @@ export default ({ data }) => (
   </Layout>
 )
 
+const __Tags = css({
+  margin: '0 0 0.3em 0.2em',
+  padding: 0,
+  listStyleType: 'none',
+})
+const __Tags_tag = css({
+  display: 'inline-block',
+  marginRight: '0.8em',
+  fontFamily: 'Georgia',
+  fontStyle: 'italic',
+  fontSize: '0.8em',
+  color: '#888',
+})
 const Tags = ({ tags }) => (
-  <div>
+  <ul className={__Tags}>
     {tags.map(tag => (
-      <span key={tag}>{tag}</span>
+      <li key={tag} className={__Tags_tag}>
+        {tag}
+      </li>
     ))}
-  </div>
+  </ul>
 );
 
-const Entry = ({ title, date, excerpt, tags, slug }) => (
-  <StyledEntry>
-    <StyledLink to={slug}>
-      <StyledDate>
-        <Bullet />
-        {date}
-      </StyledDate>
-      <StyledContent>
-        <Title>{title}</Title>
-        <Excerpt>{excerpt}</Excerpt>
-        <Tags tags={tags || []} />
-      </StyledContent>
-    </StyledLink>
-  </StyledEntry>
+const __Date = css({
+  margin: 0,
+  fontFamily: 'Georgia',
+  fontStyle: 'italic',
+  fontSize: '0.8em',
+  color: '#888',
+})
+const Date = ({ date }) => (
+  <p className={__Date}>
+    {date}
+  </p>
 )
 
-const StyledEntry = styled.div`
-margin-bottom: 2em;
-`
+const __Title = css({
+  position: 'relative',
+  marginBottom: '0.3em',
+})
+const __Title_bulletWrapper = css({
+  position: 'absolute',
+  top: '0px',
+  left: '-34px',
+  width: '21px',
+  height: '25px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'white',
+})
+const __Title_bullet = css({
+  display: 'block',
+  margin: 0,
+  padding: 0,
+  width: '9px',
+  height: '9px',
+  border: '1px solid #bbb',
+  borderRadius: '50%',
+})
+const __Title_title = css({
+  margin: '0',
+})
+const Title = ({ title }) => (
+  <div className={__Title}>
+    <div className={__Title_bulletWrapper}>
+      <span className={__Title_bullet} />
+    </div>
+    <h2 className={__Title_title}>
+      {title}
+    </h2>
+  </div>
+)
 
-const StyledLink = styled(Link)`
-font-style: normal;
-text-decoration: none;
-color: #333;
-`
+const __Excerpt = css({
+  margin: 0,
+  marginBottom: '0.3em',
+})
+const Excerpt = ({ text }) => (
+  <p className={__Excerpt}>
+    {text}
+  </p>
+)
 
-const Bullet = styled.span`
-display: inline-block;
-margin-left: -0.3em;
-margin-right: 1.424em;
-width: 9px;
-height: 9px;
-border-radius: 25%;
-transform: rotate(45deg);
-border: 1px solid #888; 
-
-${StyledLink}:hover & {
-  background-color: #888;
-}
-`
-
-const StyledContent = styled.div`
-padding-left: 1.424em;
-border-left: 1px dashed #888; 
-`
-
-const StyledDate = styled.p`
-margin: 0;
-font-size: 0.8em;
-color: #888;
-`
-
-const Title = styled.h2`
-margin-top: 0.3em;
-margin-bottom: 0.2em;
-`
-
-const Excerpt = styled.p`
-margin: 0;
-`
+const __Entry = css({
+  paddingLeft: '1.424em',
+  paddingBottom: '1.602em',
+  borderLeft: '1px dashed #bbb',
+})
+const __Entry_link = css({
+  textDecoration: 'none',
+  color: '#444',
+  [`:hover .${__Title_bullet}`]: {
+    borderColor: 'tomato',
+    backgroundColor: 'tomato',
+  }
+})
+const Entry = ({ title, date, excerpt, tags, slug }) => (
+  <div className={__Entry}>
+    <Link className={__Entry_link} to={slug}>
+      <Tags tags={tags || []} />
+      <Title title={title} />
+      <Excerpt text={excerpt} />
+      <Date date={date} />
+    </Link>
+  </div>
+)
 
 export const query = graphql`
 query {
