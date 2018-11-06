@@ -15,6 +15,8 @@ export default ({ title, children }) => (
 )
 
 const __Header = css({
+  position: 'relative',
+  zIndex: 9,
   margin: '1em auto',
   padding: '0 1em',
   width: '100%',
@@ -28,6 +30,6 @@ const __Header_heading = css({
 const __Header_link = css({
   display: 'block',
   margin: '0.8em 0 1.424em 0',
-  color: '#444',
+  color: 'black',
   textDecoration: 'none',
 })

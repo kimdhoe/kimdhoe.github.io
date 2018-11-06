@@ -92,7 +92,7 @@ const Entry = ({ title, date, excerpt, tags, slug }) => (
 )
 const __Entry_circle1 = css({
   position: 'absolute',
-  top: '-30px',
+  top: '-40px',
   left: '-40px',
   width: '150px',
   height: '150px',
