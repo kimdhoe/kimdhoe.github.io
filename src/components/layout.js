@@ -43,5 +43,6 @@ const __Container = css({
 const __Main = css({
   flex: 1,
   margin: '0 auto',
+  padding: '0 1em',
   maxWidth: '760px',
 })

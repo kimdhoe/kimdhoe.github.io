@@ -30,7 +30,6 @@ const __Tags_tag = css({
   fontFamily: 'Georgia',
   fontStyle: 'italic',
   fontSize: '0.8em',
-  color: '#888',
 })
 const Tags = ({ tags }) => (
   <ul className={__Tags}>
@@ -47,7 +46,6 @@ const __Date = css({
   fontFamily: 'Georgia',
   fontStyle: 'italic',
   fontSize: '0.8em',
-  color: '#888',
 })
 const Date = ({ date }) => (
   <p className={__Date}>
@@ -59,34 +57,11 @@ const __Title = css({
   position: 'relative',
   marginBottom: '0.3em',
 })
-const __Title_bulletWrapper = css({
-  position: 'absolute',
-  top: '0px',
-  left: '-34px',
-  width: '21px',
-  height: '25px',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: 'white',
-})
-const __Title_bullet = css({
-  display: 'block',
-  margin: 0,
-  padding: 0,
-  width: '9px',
-  height: '9px',
-  border: '1px solid #bbb',
-  borderRadius: '50%',
-})
 const __Title_title = css({
   margin: '0',
 })
 const Title = ({ title }) => (
   <div className={__Title}>
-    <div className={__Title_bulletWrapper}>
-      <span className={__Title_bullet} />
-    </div>
     <h2 className={__Title_title}>
       {title}
     </h2>
@@ -103,21 +78,10 @@ const Excerpt = ({ text }) => (
   </p>
 )
 
-const __Entry = css({
-  paddingLeft: '1.424em',
-  paddingBottom: '1.602em',
-  borderLeft: '1px dashed #bbb',
-})
-const __Entry_link = css({
-  textDecoration: 'none',
-  color: '#444',
-  [`:hover .${__Title_bullet}`]: {
-    borderColor: 'tomato',
-    backgroundColor: 'tomato',
-  }
-})
 const Entry = ({ title, date, excerpt, tags, slug }) => (
   <div className={__Entry}>
+    <div className={__Entry_circle1} />
+    {/*<div className={__Entry_circle2} />*/}
     <Link className={__Entry_link} to={slug}>
       <Tags tags={tags || []} />
       <Title title={title} />
@@ -126,6 +90,33 @@ const Entry = ({ title, date, excerpt, tags, slug }) => (
     </Link>
   </div>
 )
+const __Entry_circle1 = css({
+  position: 'absolute',
+  top: '-30px',
+  left: '-40px',
+  width: '150px',
+  height: '150px',
+  borderRadius: '50%',
+  backgroundColor: 'transparent',
+  opacity: 0,
+  transform: 'translateY(10px)',
+  transition: 'all 0.2s ease',
+})
+const __Entry = css({
+  position: 'relative',
+  paddingBottom: '2em',
+  [`:hover .${__Entry_circle1}`]: {
+    backgroundColor: 'tomato',
+    opacity: 0.4,
+    transform: 'translateY(0)',
+  }
+})
+const __Entry_link = css({
+  position: 'relative',
+  zIndex: 9,
+  textDecoration: 'none',
+  color: '#444',
+})
 
 export const query = graphql`
 query {

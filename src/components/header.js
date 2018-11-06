@@ -16,6 +16,7 @@ export default ({ title, children }) => (
 
 const __Header = css({
   margin: '1em auto',
+  padding: '0 1em',
   width: '100%',
   maxWidth: '960px',
 })
