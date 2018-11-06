@@ -23,7 +23,9 @@ export default ({ children }) => (
       <div className={__Container}>
         <Header title={data.site.siteMetadata.title} />
 
-        {children}
+        <main className={__Main}>
+          {children}
+        </main>
 
         <Footer />
       </div>
@@ -32,7 +34,14 @@ export default ({ children }) => (
 )
 
 const __Container = css({
+  display: 'flex',
+  minHeight: '100vh',
+  flexDirection: 'column',
   margin: '0 auto',
-  padding: '1em',
+})
+
+const __Main = css({
+  flex: 1,
+  margin: '0 auto',
   maxWidth: '760px',
 })

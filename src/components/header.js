@@ -2,21 +2,6 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { css } from 'glamor'
 
-const __Header = css({
-  marginBottom: '4em',
-  textAlign: 'center',
-})
-const __Header_heading = css({
-  fontFamily: 'Georgia',
-  fontStyle: 'italic',
-})
-const __Header_link = css({
-  display: 'block',
-  margin: '0.8em 0 1.424em 0',
-  color: '#444',
-  textDecoration: 'none',
-})
-
 export default ({ title, children }) => (
   <header className={__Header}>
     <h1 className={__Header_heading}>
@@ -29,4 +14,19 @@ export default ({ title, children }) => (
   </header>
 )
 
-
+const __Header = css({
+  margin: '1em auto',
+  width: '100%',
+  maxWidth: '960px',
+})
+const __Header_heading = css({
+  fontFamily: 'Georgia',
+  fontWeight: 400,
+  fontStyle: 'italic',
+})
+const __Header_link = css({
+  display: 'block',
+  margin: '0.8em 0 1.424em 0',
+  color: '#444',
+  textDecoration: 'none',
+})
