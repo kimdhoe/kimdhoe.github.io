@@ -11,7 +11,7 @@ export default ({ data: { markdownRemark: { frontmatter, html } } }) => {
         {/*<div className={__circle1} />*/}
         {/*<div className={__circle2} />*/}
         <p className={__Post_tags}>
-          {frontmatter.tags.map(tag => (
+          {(frontmatter.tags || []).map(tag => (
             <span key={tag} className={__Post_tag}>
               #{tag}
             </span>
