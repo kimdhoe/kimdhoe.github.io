@@ -30,12 +30,13 @@ const __Tags_tag = css({
   fontFamily: 'Georgia',
   fontStyle: 'italic',
   fontSize: '0.8em',
+  color: '#777',
 })
 const Tags = ({ tags }) => (
   <ul className={__Tags}>
     {tags.map(tag => (
       <li key={tag} className={__Tags_tag}>
-        {tag}
+        #{tag}
       </li>
     ))}
   </ul>
@@ -46,6 +47,7 @@ const __Date = css({
   fontFamily: 'Georgia',
   fontStyle: 'italic',
   fontSize: '0.8em',
+  color: '#777',
 })
 const Date = ({ date }) => (
   <p className={__Date}>
@@ -80,7 +82,7 @@ const Excerpt = ({ text }) => (
 
 const Entry = ({ title, date, excerpt, tags, slug }) => (
   <div className={__Entry}>
-    <div className={__Entry_circle1} />
+    {/*<div className={__Entry_circle1} />*/}
     {/*<div className={__Entry_circle2} />*/}
     <Link className={__Entry_link} to={slug}>
       <Tags tags={tags || []} />
