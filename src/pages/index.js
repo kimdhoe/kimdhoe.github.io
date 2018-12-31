@@ -6,6 +6,12 @@ import Layout from '../components/layout'
 
 export default ({ data }) => (
   <Layout>
+    <Entry
+      slug={'/art/code-art'}
+      title={'Generative art'}
+      date={'31 December, 2018'}
+      excerpt={'솔 르윗(Sol LeWitt) 스타일의 지시사항으로 이미지 만들기'}
+    />
     {data.allMarkdownRemark.edges.map(({ node }) => (
       <Entry
         key={node.id}
@@ -13,7 +19,6 @@ export default ({ data }) => (
         title={node.frontmatter.title}
         date={node.frontmatter.date}
         excerpt={node.frontmatter.excerpt}
-        tags={node.frontmatter.tags}
       />
     ))}
   </Layout>
@@ -32,15 +37,6 @@ const __Tags_tag = css({
   fontSize: '0.8em',
   color: '#777',
 })
-const Tags = ({ tags }) => (
-  <ul className={__Tags}>
-    {tags.map(tag => (
-      <li key={tag} className={__Tags_tag}>
-        #{tag}
-      </li>
-    ))}
-  </ul>
-);
 
 const __Date = css({
   margin: 0,
@@ -80,12 +76,11 @@ const Excerpt = ({ text }) => (
   </p>
 )
 
-const Entry = ({ title, date, excerpt, tags, slug }) => (
+const Entry = ({ title, date, excerpt, slug }) => (
   <div className={__Entry}>
     {/*<div className={__Entry_circle1} />*/}
     {/*<div className={__Entry_circle2} />*/}
     <Link className={__Entry_link} to={slug}>
-      <Tags tags={tags || []} />
       <Title title={title} />
       <Excerpt text={excerpt} />
       <Date date={date} />
@@ -131,7 +126,6 @@ query {
           title
           date(formatString: "DD MMMM, YYYY")
           excerpt
-          tags
         }
         fields {
           slug

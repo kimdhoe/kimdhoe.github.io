@@ -110,7 +110,6 @@ query($slug: String!) {
       title
       date(formatString: "DD MMMM, YYYY")
       excerpt
-      tags
     }
   }
 }
