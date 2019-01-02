@@ -7,6 +7,12 @@ import Layout from '../components/layout'
 export default ({ data }) => (
   <Layout>
     <Entry
+      slug={'/art/sol-11'}
+      title={'[Sol Lewitt] Wall Drawing #11 (1969)'}
+      date={'2 January, 2019'}
+      excerpt={'Wall drawing #11 by Sol Lewitt implemented via HTML5 Canvas'}
+    />
+    <Entry
       slug={'/art/sol-118'}
       title={'[Sol Lewitt] Wall Drawing #118 (1971)'}
       date={'1 January, 2019'}

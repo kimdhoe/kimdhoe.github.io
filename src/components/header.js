@@ -26,6 +26,7 @@ const __Header_heading = css({
   fontFamily: 'Georgia',
   fontWeight: 400,
   fontStyle: 'italic',
+  fontSize: '27px',
 })
 const __Header_link = css({
   display: 'block',

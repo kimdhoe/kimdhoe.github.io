@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import { css } from 'glamor'
 import random from 'canvas-sketch-util/random'
 import { lerp } from 'canvas-sketch-util/math'
@@ -47,7 +48,7 @@ class Sol118 extends React.Component {
       <Layout>
         <div>
           <h2 style={{ textAlign: 'center' }}>
-            [Sol LeWitt] Wall Drawing #118 (1971)
+            [Sol Lewitt] Wall Drawing #118 (1971)
           </h2>
 
           <div className={styles.art}>
@@ -181,3 +182,13 @@ const getPoints = ({ width, height, rows = 5, cols = 10 }) => {
 }
 
 export default Sol118
+
+export const query = graphql`
+query {
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}
+`
