@@ -48,7 +48,7 @@ class Sol118 extends React.Component {
       <Layout>
         <div>
           <h2 style={{ textAlign: 'center' }}>
-            [Sol Lewitt] Wall Drawing #118 (1971)
+            [Sol LeWitt] Wall Drawing #118 (1971)
           </h2>
 
           <div className={styles.art}>
