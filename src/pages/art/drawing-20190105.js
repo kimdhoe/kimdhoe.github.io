@@ -11,13 +11,6 @@ import Layout from '../../components/layout'
 
 // A Path is an array: [ Point, Point ]
 
-const LINE_SPACING = random.rangeFloor(11, 15)
-const WIDTH = random.rangeFloor(400, 550)
-const HEIGHT = random.rangeFloor(300, 500)
-const MIN_ANGLE = 0.09 * Math.PI
-const MAX_ANGLE = Math.atan(HEIGHT / WIDTH)
-const ANGLE = random.range(MIN_ANGLE, MAX_ANGLE)
-
 // Given x and y coordinates, produces a point.
 const point = (x, y) => ({ x, y })
 
@@ -26,14 +19,15 @@ const path = (a, b) => ([ a, b ])
 
 const getPaths = (width, height, angle) => {
   const paths = []
-  const lineSpacingVertical = LINE_SPACING * Math.tan(angle)
+  const lineSpacing = random.rangeFloor(11, 15)
+  const lineSpacingVertical = lineSpacing * Math.tan(angle)
 
   let bY
   let aX
   let aY
 
   // Draw a right triangle (top)
-  for (let x = 1; x <= width; x += LINE_SPACING) {
+  for (let x = 1; x <= width; x += lineSpacing) {
     bY = x * Math.tan(angle)
     const a = point(x, 0)
     const b = point(0, bY)
@@ -71,12 +65,12 @@ const getPaths = (width, height, angle) => {
   return paths
 }
 
-const draw = context => {
+const draw = (context, width, height, angle) => {
   const colors = random.pick(palettes)
-  const paths = getPaths(WIDTH, HEIGHT, ANGLE)
+  const paths = getPaths(width, height, angle)
 
   context.fillStyle = 'white'
-  context.fillRect(0, 0, WIDTH, HEIGHT)
+  context.fillRect(0, 0, width, height)
   paths.forEach(([ a, b ]) => {
     context.beginPath()
     context.moveTo(a.x, a.y)
@@ -90,11 +84,24 @@ const draw = context => {
 class Art20190105 extends React.Component {
   canvas = React.createRef()
 
+  state = {
+    width: 0,
+    height: 0,
+  }
+
+
   componentDidMount () {
     const canvas = this.canvas.current
     const context = canvas.getContext('2d')
+    const width = random.rangeFloor(400, 550)
+    const height = random.rangeFloor(300, 500)
+    const minAngle = 0.09 * Math.PI
+    const maxAngle = Math.atan(height / width)
+    const angle = random.range(minAngle, maxAngle)
 
-    draw(context)
+    this.setState({ width , height }, () => {
+      draw(context, width, height, angle)
+    })
   }
 
   render () {
@@ -108,15 +115,15 @@ class Art20190105 extends React.Component {
           <div className={styles.art}>
             <canvas
               ref={this.canvas}
-              width={WIDTH}
-              height={HEIGHT}
+              width={this.state.width}
+              height={this.state.height}
             />
           </div>
 
           <div className={styles.labelWrapper}>
             <div className={styles.label}>
               <p className={styles.artist}>
-                kimdhoe
+                Kimdhoe
               </p>
               <p className={styles.artwork}>
                 <span className={styles.italic}>Wall drawing</span>
