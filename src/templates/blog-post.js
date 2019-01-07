@@ -8,8 +8,6 @@ export default ({ data: { markdownRemark: { frontmatter, html } } }) => {
   return (
     <Layout>
       <div className={__Post}>
-        {/*<div className={__circle1} />*/}
-        {/*<div className={__circle2} />*/}
         <p className={__Post_tags}>
           {(frontmatter.tags || []).map(tag => (
             <span key={tag} className={__Post_tag}>
@@ -57,45 +55,12 @@ const __Post_excerpt = css({
 const __Post_date = css({
   margin: '2em 0 3em',
   fontFamily: 'Georgia',
-  // fontStyle: 'italic',
   textAlign: 'right',
   color: '#888',
 })
 
-const __float1 = css.keyframes({
-  '0%': { transform: 'translate(0, 0)' },
-  '70%': { opacity: 0 },
-  '100%': { transform: 'translate(-50px, -125px)', opacity: 0 }
-})
-const __float2 = css.keyframes({
-  '0%': { transform: 'translate(0, 0)' },
-  '50%': { opacity: 0 },
-  '100%': { transform: 'translate(-30px, -125px)', opacity: 0 }
-})
 const __Post = css({
   position: 'relative',
-})
-const __circle1 = css({
-  position: 'absolute',
-  top: '-410px',
-  left: '-300px',
-  width: '480px',
-  height: '480px',
-  borderRadius: '50%',
-  backgroundColor: '#2962ff',
-  opacity: 0.7,
-  animation: `${__float1} 11s forwards`,
-})
-const __circle2 = css({
-  position: 'absolute',
-  top: '-100px',
-  left: '-50px',
-  width: '190px',
-  height: '190px',
-  borderRadius: '50%',
-  backgroundColor: '#ffcc33',
-  opacity: 0.9,
-  animation: `${__float2} 19s forwards`,
 })
 const __Post_contents = css({
   position: 'relative',

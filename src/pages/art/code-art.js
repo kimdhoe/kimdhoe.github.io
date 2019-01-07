@@ -1,5 +1,4 @@
 import React from 'react'
-import canvasSketch from 'canvas-sketch'
 import random from 'canvas-sketch-util/random'
 import { lerp } from 'canvas-sketch-util/math'
 import palettes from 'nice-color-palettes/1000.json'
@@ -93,46 +92,6 @@ const getShapes = (grid, height, margin, palette) => {
 	shapes.sort((a, b) => a.averageY - b.averageY)
 
 	return shapes
-}
-
-
-const sketch = ({ width, height }) => {
-	const nColors = random.rangeFloor(1, 6)
-	const palette = random.shuffle(random.pick(palettes)).slice(0, nColors)
-	const points = makeGrid({
-		width,
-		height,
-		count: COUNT,
-		margin: MARGIN,
-	})
-	const shapes = getShapes(points, height, MARGIN, palette)
-
-	return ({ context, width, height }) => {
-		context.globalAlpha = 1
-		context.fillStyle = 'white'
-		context.fillRect(0, 0, width, height)
-
-		shapes.forEach(({ path, color }) => {
-			// draw lines
-			context.beginPath()
-			path.forEach(({ x, y }) => {
-				context.lineTo(x, y)
-			})
-			context.closePath()
-
-			// trapezoid with a background color
-			context.globalAlpha = 0.85
-			context.fillStyle = color
-			context.fill()
-
-			// outline
-			context.lineWidth = LINE_WIDTH
-			context.lineJoin = context.lineCap = 'round'
-			context.globalAlpha = 1
-			context.strokeStyle = 'white'
-			context.stroke()
-		})
-	}
 }
 
 class Trapezoids extends React.Component {

@@ -54,20 +54,6 @@ export default ({ data }) => (
   </Layout>
 )
 
-const __Tags = css({
-  margin: '0 0 0.3em 0.2em',
-  padding: 0,
-  listStyleType: 'none',
-})
-const __Tags_tag = css({
-  display: 'inline-block',
-  marginRight: '0.8em',
-  fontFamily: 'Georgia',
-  fontStyle: 'italic',
-  fontSize: '0.8em',
-  color: '#777',
-})
-
 const __Date = css({
   margin: 0,
   fontFamily: 'Georgia',
