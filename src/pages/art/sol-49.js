@@ -5,13 +5,10 @@ import random from 'canvas-sketch-util/random'
 import Layout from '../../components/layout'
 
 const PALETTE = [
-  '#343a40',
-  '#e03131',
-  '#9c36b5',
-  '#3b5bdb',
-  '#0c8599',
-  '#099268',
-  '#f08c00',
+  '#c92a2a',
+  '#e67700',
+  '#1864ab',
+  '#212529',
 ]
 
 class Sol49 extends React.Component {
