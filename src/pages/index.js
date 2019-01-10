@@ -9,7 +9,7 @@ export default ({ data }) => (
     <Entry
       slug={'/art/sol-56'}
       title={'[Sol LeWitt] Wall Drawing #56 (1970)'}
-      date={'9 January, 2019'}
+      date={'10 January, 2019'}
       excerpt={'Wall drawing #56 by Sol LeWitt implemented via HTML5 Canvas'}
     />
     <Entry
