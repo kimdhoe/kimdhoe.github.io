@@ -1,6 +1,5 @@
 import React from 'react'
 import { css } from 'glamor'
-import random from 'canvas-sketch-util/random'
 
 import Layout from '../../components/layout'
 
