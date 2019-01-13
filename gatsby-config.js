@@ -10,6 +10,10 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-emotion',
+      options: {},
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'src',

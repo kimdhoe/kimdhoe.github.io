@@ -1,32 +1,31 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { css } from 'glamor'
+import { css } from '@emotion/core'
 import Layout from '../components/layout'
 
 export default ({ data: { markdownRemark: { frontmatter, html } } }) => {
-  console.log(frontmatter)
   return (
     <Layout>
-      <div className={__Post}>
-        <p className={__Post_tags}>
+      <div css={__Post}>
+        <p css={__Post_tags}>
           {(frontmatter.tags || []).map(tag => (
-            <span key={tag} className={__Post_tag}>
+            <span key={tag} css={__Post_tag}>
               #{tag}
             </span>
           ))}
         </p>
 
-        <h2 className={__Post_title}>{frontmatter.title}</h2>
+        <h2 css={__Post_title}>{frontmatter.title}</h2>
 
-        <p className={__Post_excerpt}>
+        <p css={__Post_excerpt}>
           {frontmatter.excerpt}
         </p>
 
-        <p className={__Post_date}>
+        <p css={__Post_date}>
           {frontmatter.date}
         </p>
 
-        <div className={__Post_contents} dangerouslySetInnerHTML={{ __html: html }} />
+        <div css={__Post_contents} dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     </Layout>
   )

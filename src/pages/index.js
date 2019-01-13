@@ -1,6 +1,7 @@
+/** @jsx jsx */
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import { css } from 'glamor'
+import { jsx, css } from '@emotion/core'
 
 import Layout from '../components/layout'
 
@@ -110,7 +111,7 @@ const __Date = css({
   color: '#777',
 })
 const Date = ({ date }) => (
-  <p className={__Date}>
+  <p css={__Date}>
     {date}
   </p>
 )
@@ -123,8 +124,8 @@ const __Title_title = css({
   margin: '0',
 })
 const Title = ({ title }) => (
-  <div className={__Title}>
-    <h2 className={__Title_title}>
+  <div css={__Title}>
+    <h2 css={__Title_title}>
       {title}
     </h2>
   </div>
@@ -135,16 +136,16 @@ const __Excerpt = css({
   marginBottom: '0.3em',
 })
 const Excerpt = ({ text }) => (
-  <p className={__Excerpt}>
+  <p css={__Excerpt}>
     {text}
   </p>
 )
 
 const Entry = ({ title, date, excerpt, slug }) => (
-  <div className={__Entry}>
-    {/*<div className={__Entry_circle1} />*/}
-    {/*<div className={__Entry_circle2} />*/}
-    <Link className={__Entry_link} to={slug}>
+  <div css={__Entry}>
+    {/*<div css={__Entry_circle1} />*/}
+    {/*<div css={__Entry_circle2} />*/}
+    <Link css={__Entry_link} to={slug}>
       <Title title={title} />
       <Excerpt text={excerpt} />
       <Date date={date} />

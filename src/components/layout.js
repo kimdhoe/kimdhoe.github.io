@@ -1,6 +1,7 @@
+/** @jsx jsx */
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { css } from 'glamor';
+import { jsx, css } from '@emotion/core';
 
 import Header from './header';
 import Footer from './footer';
@@ -20,10 +21,10 @@ export default ({ children }) => (
       }
     `}
     render={data => (
-      <div className={__Container}>
+      <div css={__Container}>
         <Header title={data.site.siteMetadata.title} />
 
-        <main className={__Main}>
+        <main css={__Main}>
           {children}
         </main>
 
@@ -44,5 +45,6 @@ const __Main = css({
   flex: 1,
   margin: '0 auto',
   padding: '0 1em',
+  width: '100%',
   maxWidth: '760px',
 })
