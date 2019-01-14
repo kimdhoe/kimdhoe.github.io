@@ -79,7 +79,7 @@ const WorkNumber = ({ number, year }) => (
 
 const Number = styled.p`
   margin: 0;
-  font-size: 1.1em;
+  font-size: 1.05em;
   font-weight: 600;
   font-style: italic;
 `

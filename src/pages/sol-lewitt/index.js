@@ -21,7 +21,7 @@ const Header = () => (
   <h2 css={[ styles.headingText ]}>
     <span css={[ styles.nameText ]}>
       Sol LeWitt
-    </span>'s wall drawings
+    </span><span css={[ styles.nameText2 ]}>'s</span> wall drawings
   </h2>
 )
 
@@ -46,13 +46,17 @@ const styles = {
     marginBottom: '1em',
     fontSize: '1.6em',
     fontWeight: 300,
+    fontStyle: 'italic',
     letterSpacing: '0.01em',
   }),
   nameText: css({
-    fontWeight: 600,
-    fontStyle: 'italic',
+    fontWeight: 700,
+    fontStyle: 'normal',
     letterSpacing: '0.05em',
   }),
+  nameText2: {
+    fontStyle: 'normal',
+  },
   drawings: css({
     width: '100%',
     display: 'flex',
