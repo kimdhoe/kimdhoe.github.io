@@ -10,8 +10,31 @@ class Sol extends React.Component {
   render () {
     return (
       <Layout>
-        <Header />
-        <Label />
+        <div css={{
+          display: 'flex',
+          alignItems: 'center',
+          '@media (max-width: 768px)': {
+            display: 'block',
+          },
+        }}>
+          <div css={{ marginRight: '1em' }}>
+            <Header />
+            <Label />
+          </div>
+          <div css={{ flex: 1 }}>
+            <p css={{
+              padding: '0 1em',
+              fontSize: '0.85em',
+              fontStyle: 'italic',
+              fontWeight: 300,
+              color: 'black',
+            }}>
+              <span css={{ fontStyle: 'normal' }}>「</span>In conceptual art the idea or the concept is the most important aspect of the work.
+              When an artist uses a conceptual form of art, it means that all of the planning and decisions are made beforehand and the execution is a perfunctory affair.
+              The idea becomes a machine that makes the art.<span css={{ fontStyle: 'normal' }}>」</span>
+            </p>
+          </div>
+        </div>
         <Note />
         <Drawings works={sol.works} />
       </Layout>
@@ -30,13 +53,7 @@ const Header = () => (
 const Label = () => (
   <div css={[ styles.label ]}>
     <p css={[ styles.medium ]}>
-      Web Technology (mostly
-      {' '}
-      <span css={{ fontStyle: 'italic', padding: '0.1em 0.3em' }}>
-        HTML Canvas
-      </span>
-      {' '}
-      API)
+      Web Technology (HTML Canvas API)
     </p>
     <p css={[ styles.artist ]}>
       Kimdhoe
@@ -55,11 +72,11 @@ const Note = () => (
       이 프로젝트는 그의 <Italic>아이디어</Italic>를 지시에 따라 실제로 구현하면서 웹 시각화 기술을 익히기 위한 시도로 시작되었고,
       매일 벽화 지시사항 하나를 코드로 구현해내는 것을 목표로 하고 있습니다.
     </p>
-    <blockquote css={[ styles.quote ]}>
-      <span css={{ fontStyle: 'normal' }}>「</span>In conceptual art the idea or the concept is the most important aspect of the work.
-      When an artist uses a conceptual form of art, it means that all of the planning and decisions are made beforehand and the execution is a perfunctory affair.
-      The idea becomes a machine that makes the art.<span css={{ fontStyle: 'normal' }}>」</span>
-    </blockquote>
+    {/*<blockquote css={[ styles.quote ]}>*/}
+      {/*<span css={{ fontStyle: 'normal' }}>「</span>In conceptual art the idea or the concept is the most important aspect of the work.*/}
+      {/*When an artist uses a conceptual form of art, it means that all of the planning and decisions are made beforehand and the execution is a perfunctory affair.*/}
+      {/*The idea becomes a machine that makes the art.<span css={{ fontStyle: 'normal' }}>」</span>*/}
+    {/*</blockquote>*/}
   </div>
 )
 
