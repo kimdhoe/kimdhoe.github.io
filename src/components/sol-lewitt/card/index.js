@@ -25,7 +25,9 @@ const Container = styled(Link)`
 
 const Image = ({ image, number, type }) => (
   <ImageContainer>
-    <Img src={image} alt={`Sol LeWitt ${type} #${number}`} />
+    <ImageWrapper>
+      <Img src={image} alt={`Sol LeWitt ${type} #${number}`} />
+    </ImageWrapper>
   </ImageContainer>
 )
 
@@ -39,7 +41,7 @@ const Meta = ({ number, createdAt, year }) => (
 )
 
 const ImageContainer = styled.div`
-  border: 3px solid #333;
+  width: 100%;
   transition: all 120ms ease-out;
   @media (min-width: 769px) {
     ${Container}:hover & {
@@ -49,8 +51,19 @@ const ImageContainer = styled.div`
   }
 `
 
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  border: 3px solid #333;
+  box-sizing: content-box;
+  background-color: '#f1f3f5';
+`
+
 const Img = styled.img`
   width: 100%;
+  margin-top: 50%;
+  transform: translateY(-50%);
 `
 
 const MetaContainer = styled.div`
@@ -72,7 +85,7 @@ const WorkNumber = ({ number, year }) => (
   <Number>
     #{number}
     <span css={{ fontSize: '0.8em', fontWeight: 400, fontStyle: 'normal' }}>
-      {year ? `, ${year}` : ''}
+      {year ? ` (${year})` : ''}
     </span>
   </Number>
 )
