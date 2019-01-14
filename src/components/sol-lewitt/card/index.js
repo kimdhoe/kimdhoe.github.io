@@ -43,7 +43,7 @@ const ImageContainer = styled.div`
   transition: all 120ms ease-out;
   @media (min-width: 769px) {
     ${Container}:hover & {
-      boxShadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.3);
+      box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.3);
       transform: scale(1.02);
     }
   }
