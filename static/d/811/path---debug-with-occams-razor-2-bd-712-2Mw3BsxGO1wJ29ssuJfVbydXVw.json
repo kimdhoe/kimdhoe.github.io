@@ -1,1 +1,0 @@
-{"data":{"markdownRemark":{"html":"<p>얼마 전에 있었던 너무나 허탈했던 디버깅 경험을 남겨놓기 위한 글이다.\n개발자에게 시간이란 아마도 가장 소중한 자원일 텐데, 멍청한 디버깅 때문에 이 아까운 시간이 </p>\n<p>앞서 요약하자면 흔한 증상을 멍청하게 디버깅하면서 아까운 시간을 보냈고, 더 멍청하게 디버깅하지 못한 것이 아쉽다.</p>","frontmatter":{"title":"멍청하게 디버깅하는 방법","date":"28 December, 2018","excerpt":"디버깅은 과학이다."}}},"pageContext":{"slug":"/debug-with-occams-razor/"}}
