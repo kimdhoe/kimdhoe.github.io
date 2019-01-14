@@ -4,11 +4,48 @@ import { Link, graphql } from 'gatsby'
 import { jsx, css } from '@emotion/core'
 
 import Layout from '../../components/layout'
+import sol56 from './sol-56.png'
+import sol51 from './sol-51.png'
+import sol49 from './sol-49.png'
+import sol46 from './sol-46.png'
+import sol45 from './sol-45.png'
+import sol17 from './sol-17.png'
 import sol16 from './sol-16.png'
 import sol11 from './sol-11.png'
 import sol118 from './sol-118.png'
 
-const works = [ {
+const works = [
+  {
+    type: 'wall drawing',
+    number: 56,
+    image: sol56,
+  },
+  {
+    type: 'wall drawing',
+    number: 51,
+    image: sol51,
+  },
+  {
+    type: 'wall drawing',
+    number: 49,
+    image: sol49,
+  },
+  {
+    type: 'wall drawing',
+    number: 46,
+    image: sol46,
+  },
+  {
+    type: 'wall drawing',
+    number: 45,
+    image: sol45,
+  },
+  {
+    type: 'wall drawing',
+    number: 17,
+    image: sol17,
+  },
+  {
     type: 'wall drawing',
     number: 16,
     image: sol16,
@@ -81,7 +118,11 @@ const styles = {
     },
   }),
   itemWrapper: css({
+    marginLeft: -3,
     marginBottom: '15%',
+    '@media(max-width: 768px)': {
+      marginBottom: '7.5%',
+    },
     paddingBottom: '100%',
     boxSizing: 'content-box',
     width: '100%',
