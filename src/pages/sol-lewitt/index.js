@@ -34,6 +34,7 @@ const Drawings = ({ works }) => (
         number={work.number}
         type={work.type}
         createdAt={work.createdAt}
+        year={work.year}
       />
     ))}
   </div>

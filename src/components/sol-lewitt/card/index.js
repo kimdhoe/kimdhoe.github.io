@@ -4,10 +4,10 @@ import { Link } from 'gatsby'
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 
-const Card = ({ image, number, type, createdAt }) => (
+const Card = ({ image, number, type, createdAt, year }) => (
   <Container to={`/sol-lewitt/wall-drawing-${number}`}>
     <Image image={image} number={number} type={type} />
-    <Meta number={number} createdAt={createdAt} />
+    <Meta number={number} createdAt={createdAt} year={year} />
   </Container>
 )
 
@@ -29,12 +29,12 @@ const Image = ({ image, number, type }) => (
   </ImageContainer>
 )
 
-const Meta = ({ number, createdAt }) => (
+const Meta = ({ number, createdAt, year }) => (
   <MetaContainer>
     <CreatedAt>
       {createdAt}
     </CreatedAt>
-    <WorkNumber number={number} />
+    <WorkNumber number={number} year={year} />
   </MetaContainer>
 )
 
@@ -68,9 +68,12 @@ const CreatedAt = styled.p`
   letter-spacing: 0.03em;
 `
 
-const WorkNumber = ({ number }) => (
+const WorkNumber = ({ number, year }) => (
   <Number>
     #{number}
+    <span css={{ fontSize: '0.8em', fontWeight: 400, fontStyle: 'normal' }}>
+      {year ? `, ${year}` : ''}
+    </span>
   </Number>
 )
 
@@ -78,4 +81,5 @@ const Number = styled.p`
   margin: 0;
   font-size: 1.1em;
   font-weight: 600;
+  font-style: italic;
 `
