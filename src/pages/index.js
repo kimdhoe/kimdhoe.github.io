@@ -7,6 +7,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { jsx, css } from '@emotion/core'
 import * as Feather from 'react-feather'
+import { Helmet } from 'react-helmet'
 
 import Layout from '../components/layout'
 import { sol } from '../services'
@@ -71,6 +72,16 @@ const sss = {
 
 export default ({ data }) => (
   <Layout>
+    <Helmet defaultTitle={'dhk.party'}>
+      <link rel={'canonical'} href={'https://dhk.party'} />
+      <meta name={'description'} content={'프론트엔드 개발자 김동희입니다. 프로그래밍, 혹은 그에 대한 개인적인 경험을 기록합니다.'} />
+      <meta property={'og:title'} content={'dhk.party'} />
+      <meta property={'og:description'} content={'프론트엔드 개발자 김동희입니다. 프로그래밍, 혹은 그에 대한 개인적인 경험과 결과물을 기록합니다.'} />
+      <meta property={'og:site_name'} content={'dhk.party'} />
+      <meta property={'og:title'} content={'김동희'} />
+      <meta property={'og:type'} content={'website'} />
+      <meta property={'og:image'} content={'https://dhk.party/static/sol-88-0ea33b20076949c13277bb11f769b920.png'} />
+    </Helmet>
     <div css={{
       display: 'flex',
       '@media (max-width: 768px)': {
