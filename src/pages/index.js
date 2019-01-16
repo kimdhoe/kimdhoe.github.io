@@ -289,6 +289,8 @@ const solStyles = {
     position: 'absolute',
     right: 0,
     top: '50%',
+    lineHeight: 1,
+    textAlign: 'right',
     transform: 'translateY(-50%)',
     fontSize: '2.5em',
     fontWeight: 800,
