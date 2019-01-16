@@ -46,5 +46,5 @@ const __Main = css({
   margin: '0 auto',
   padding: '0 1em',
   width: '100%',
-  maxWidth: '760px',
+  maxWidth: '960px',
 })
