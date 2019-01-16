@@ -30,7 +30,7 @@ class Sol extends React.Component {
               color: 'black',
             }}>
               <span css={{ fontStyle: 'normal' }}>「</span>In conceptual art the idea or the concept is the most important aspect of the work.
-              When an artist uses a conceptual form of art, it means that all of the planning and decisions are made beforehand and the execution is a perfunctory affair.
+              When an artist uses a conceptual form of art, it means that all of the planning and decisions are made beforehand and the execution is a perfunctory affair.{' '}
               The idea becomes a machine that makes the art.<span css={{ fontStyle: 'normal' }}>」</span>
             </p>
           </div>
@@ -56,7 +56,7 @@ const Label = () => (
       Web Technology (HTML Canvas API)
     </p>
     <p css={[ styles.artist ]}>
-      Kimdhoe
+      Donghee Kim
     </p>
   </div>
 )
@@ -64,19 +64,19 @@ const Label = () => (
 const Note = () => (
   <div css={[ styles.note ]}>
     <h3 css={[ styles.subtitle ]}>
-      One drawing a day
+      One drawing a day —{' '}
+      <q css={{ textTransform: 'none', fontStyle: 'italic' }}>
+        The idea becomes a machine that makes the art
+      </q>
     </h3>
     <p css={[ styles.noteText ]}>
       여기 있는 이미지들은 개념 예술가 <Italic>Sol LeWitt</Italic>의 작품을 웹 기술로 구현한 것들입니다.{' '}
-      <Italic>Sol LeWitt</Italic>은 "<Italic>시각적으로 구체화되지 않는다 하더라도, 아이디어 자체는 완성된 작품과 마찬가지</Italic>"라고 생각했던 작가입니다.
-      이 프로젝트는 그의 <Italic>아이디어</Italic>를 지시에 따라 실제로 구현하면서 웹 시각화 기술을 익히기 위한 시도로 시작되었고,
-      매일 벽화 지시사항 하나를 코드로 구현해내는 것을 목표로 하고 있습니다.
+      <Italic>Sol LeWitt</Italic>은 <q css={{ fontStyle: 'italic' }}>시각적으로 구체화되지 않는다 하더라도, 아이디어 자체는 완성된 작품과 마찬가지</q>라고 생각했던 작가입니다.
+      이 프로젝트는 그의 말 그대로 아이디어를 작품 만드는 기계로 변환시키는 일을 하는 셈입니다.
     </p>
-    {/*<blockquote css={[ styles.quote ]}>*/}
-      {/*<span css={{ fontStyle: 'normal' }}>「</span>In conceptual art the idea or the concept is the most important aspect of the work.*/}
-      {/*When an artist uses a conceptual form of art, it means that all of the planning and decisions are made beforehand and the execution is a perfunctory affair.*/}
-      {/*The idea becomes a machine that makes the art.<span css={{ fontStyle: 'normal' }}>」</span>*/}
-    {/*</blockquote>*/}
+    <p css={[ styles.noteText ]}>
+      작품을 화면에 구현하면서 웹 시각화 기술을 익히기 위한 시도로 시작되었고, 매일 벽화 지시사항 하나를 코드로 구현합니다.
+    </p>
   </div>
 )
 
@@ -116,6 +116,7 @@ const styles = {
     fontWeight: 700,
     fontStyle: 'normal',
     letterSpacing: '0.05em',
+    textDecoration: 'underline',
   }),
   nameText2: {
     fontStyle: 'normal',
@@ -137,7 +138,6 @@ const styles = {
     margin: '0.3em 0 0 0',
     padding: 0,
     fontSize: '0.95em',
-    textDecoration: 'underline',
     color: 'black',
   },
   note: {
@@ -145,6 +145,10 @@ const styles = {
   },
   noteText: {
     marginBottom: '0.5em',
+    fontSize: '0.95em',
+    ':last-child': {
+      marginTop: '0.1em',
+    }
   },
   quote: {
     margin: '0 0 1em 0',
