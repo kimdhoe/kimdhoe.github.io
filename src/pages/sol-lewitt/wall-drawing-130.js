@@ -101,7 +101,7 @@ class Sol122 extends React.Component {
           </div>
 
           <blockquote className={styles.instructionContent}>
-            All combinations of two lines crossing, placed at random, using arcs from corners and sides, straight, not straight and broken lines.
+            Grid and arcs from four corners.
           </blockquote>
         </div>
       </Layout>
