@@ -1,3 +1,4 @@
+import sol130 from './sol-130.png'
 import sol122 from './sol-122.png'
 import sol91 from './sol-91.png'
 import sol88 from './sol-88.png'
@@ -20,6 +21,7 @@ const TYPES = {
 }
 
 const works = [
+  { number: 130, type: TYPES.WALL_DRAWING, image: sol130, createdAt: 'Jan 18, 2019', year: 1972 },
   { number: 122, type: TYPES.WALL_DRAWING, image: sol122, createdAt: 'Jan 17, 2019', year: 1972 },
   { number:  91, type: TYPES.WALL_DRAWING, image:  sol91, createdAt: 'Jan 16, 2019', year: 1971 },
   { number:  88, type: TYPES.WALL_DRAWING, image:  sol88, createdAt: 'Jan 15, 2019', year: 1971 },
