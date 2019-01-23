@@ -19,19 +19,44 @@ const sideProjects = [
     public: true,
   },
   {
-    name: '(WIP) How to Make Snake Game',
-    link: '/',
-    public: false,
-  },
-  {
-    name: 'Front-end Daily',
-    link: 'https://kimdhoe.github.io/frontend-daily',
+    name: 'How to Make Snake Game (Beta)',
+    link: 'https://kimdhoe.github.io/how-to-make-snake-game',
     external: true,
     public: true,
   },
   {
     name: 'Josa',
     link: 'https://github.com/kimdhoe/josa',
+    external: true,
+    public: true,
+  },
+  {
+    name: 'JavaScript Koans (Beta)',
+    link: 'https://kimdhoe.github.io/jskoans',
+    external: true,
+    public: true,
+  },
+  {
+    name: 'Mahjong Solitaire',
+    link: 'https://kimdhoe.github.io/mahjong-solitaire',
+    external: true,
+    public: true,
+  },
+  {
+    name: 'Front-end Daily (work in progress)',
+    link: 'https://kimdhoe.github.io/frontend-daily',
+    external: true,
+    public: false,
+  },
+  {
+    name: 'MeonJi',
+    link: 'https://github.com/kimdhoe/meonji',
+    external: true,
+    public: true,
+  },
+  {
+    name: '(번역) Sass Guidelines by Hugo Giraudel',
+    link: 'https://sass-guidelin.es/ko',
     external: true,
     public: true,
   },
@@ -43,8 +68,8 @@ const sss = {
     alignItems: 'center',
     margin: '1.3em 0 0.8em 0',
     letterSpacing: 0.5,
-    fontSize: '1.4em',
-    fontWeight: 400,
+    fontSize: '1.1em',
+    fontWeight: 500,
     color: '#333',
   },
   list: {
@@ -54,19 +79,27 @@ const sss = {
   },
   listItem: {
     margin: '0 0 0.5em 0',
-    padding: '0.7em 1.1em',
     borderRadius: 5,
-    backgroundColor: '#f8f9fa',
   },
   link: {
     display: 'block',
+    padding: '0.7em 1.1em',
     fontFamily: 'Georgia',
     fontStyle: 'italic',
     textDecoration: 'none',
-    color: '#000',
+    backgroundColor: '#f8f9fa',
+    color: 'black',
+    ':hover': {
+      backgroundColor: '#f1f3f5',
+    },
   },
   noLink: {
+    display: 'block',
+    padding: '0.7em 1.1em',
+    fontFamily: 'Georgia',
+    fontStyle: 'italic',
     color: '#999',
+    backgroundColor: '#f8f9fa',
   },
 }
 
@@ -97,77 +130,84 @@ export default ({ data }) => (
           width: '100%',
         }
       }}>
-        <div>
-          <h2 css={[ sss.h2 ]}>
-            howdy,
-          </h2>
-          <p>
-            프론트엔드 개발자 김동희입니다. 프로그래밍, 혹은 그에 대한 개인적인 경험을 기록합니다.
-          </p>
-        </div>
+      <div css={{ marginBottom: '3em' }}>
+        <h2 css={[ sss.h2 ]}>
+          김동희,{' '}
+          <span
+            css={{
+              paddingLeft: '0.5em',
+              textDecoration: 'underline',
+              fontWeight: 400,
+              fontSize: '0.95em',
+            }}
+          >
+            {' '}front-end engineer
+          </span>
+        </h2>
+      </div>
 
-        <h2 css={[ sss.h2 ]}>
-          <Feather.Moon css={{ marginRight: '0.5em' }} color={'#222'} size={19} />
-          side projects
-        </h2>
-        <ul css={[ sss.list ]}>
-          {sideProjects.map((project, i) => (
-            <li key={i} css={[ sss.listItem ]}>
-              {project.public ? (
-                project.external ? (
-                  <a css={[ sss.link ]} href={project.link}>
-                    {project.name}
-                  </a>
-                ) : (
-                  <Link css={[ sss.link ]} to={project.link}>
-                    {project.name}
-                  </Link>
-                )
-              ) : (
-                <span css={[ sss.noLink ]}>
+      <h2 css={[ sss.h2 ]}>
+        <Feather.Moon css={{ marginRight: '0.5em' }} color={'#222'} size={19} />
+        side projects
+      </h2>
+      <ul css={[ sss.list ]}>
+        {sideProjects.map((project, i) => (
+          <li key={i} css={[ sss.listItem ]}>
+            {project.public ? (
+              project.external ? (
+                <a css={[ sss.link ]} href={project.link}>
                   {project.name}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div css={{
-        flex: 1,
-      }}>
-        <h2 css={[ sss.h2 ]}>
-          <Feather.FileText css={{ marginRight: '0.5em' }} color={'#222'} size={18} />
-          blog
-        </h2>
-        <div>
-          {data.allMarkdownRemark.edges.map(({ node }) => (
-            <Entry
-              key={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              date={node.frontmatter.date}
-              excerpt={node.frontmatter.excerpt}
-            />
-          ))}
-        </div>
-        <h2 css={[ sss.h2 ]}>
-          <Feather.Sunrise css={{ marginRight: '0.5em' }} color={'#222'} size={19} />
-          one generative art a day
-        </h2>
-        <div>
-          {sol.works.map(({ type, number, year, createdAt, image }, i) => (
-            <SolLeWittEntry
-              key={i}
-              type={type}
-              number={number}
-              year={year}
-              image={image}
-              createdAt={createdAt}
-            />
-          ))}
-        </div>
-      </div>
+                </a>
+              ) : (
+                <Link css={[ sss.link ]} to={project.link}>
+                  {project.name}
+                </Link>
+              )
+            ) : (
+              <span css={[ sss.noLink ]}>
+                {project.name}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
+    <div css={{
+        flex: 1,
+    }}>
+    <h2 css={[ sss.h2 ]}>
+      <Feather.FileText css={{ marginRight: '0.5em' }} color={'#222'} size={18} />
+      blog
+    </h2>
+    <div>
+      {data.allMarkdownRemark.edges.map(({ node }) => (
+        <Entry
+          key={node.id}
+          slug={node.fields.slug}
+          title={node.frontmatter.title}
+          date={node.frontmatter.date}
+          excerpt={node.frontmatter.excerpt}
+        />
+      ))}
+    </div>
+    <h2 css={[ sss.h2 ]}>
+      <Feather.Sunrise css={{ marginRight: '0.5em' }} color={'#222'} size={19} />
+      generative artistry
+    </h2>
+    <div>
+      {sol.works.map(({ type, number, year, createdAt, image }, i) => (
+        <SolLeWittEntry
+          key={i}
+          type={type}
+          number={number}
+          year={year}
+          image={image}
+          createdAt={createdAt}
+        />
+      ))}
+    </div>
+  </div>
+</div>
   </Layout>
 )
 
@@ -181,33 +221,33 @@ const SolLeWittEntry = ({ type, number, year, createdAt, image }) => {
         <div css={[ solStyles.imageContainer ]}>
           <img
             css={[ solStyles.image ]}
-            src={image}
-            alt={`Sol LeWitt ${title}`}
-          />
-        </div>
-        <div css={[ solStyles.headingContainer ]}>
-          <div css={[ solStyles.createdAt ]}>
-            <p>{createdAt}</p>
-          </div>
-          <h3 css={[ solStyles.heading ]}>
-          <span css={[ solStyles.name ]}>
-            Sol LeWitt
-          </span>
-            <span css={[ solStyles.titleAndYear ]}>
-            <span css={[ solStyles.title ]}>
-              {title},{' '}
-            </span>
-            <span css={[ solStyles.year ]}>
-              {year}
-            </span>
-          </span>
-            <span css={[ solStyles.medium ]}>
-            HTML Canvas
-          </span>
-          </h3>
-        </div>
-      </div>
-    </Link>
+      src={image}
+      alt={`Sol LeWitt ${title}`}
+    />
+  </div>
+  <div css={[ solStyles.headingContainer ]}>
+    <div css={[ solStyles.createdAt ]}>
+      <p>{createdAt}</p>
+    </div>
+    <h3 css={[ solStyles.heading ]}>
+      <span css={[ solStyles.name ]}>
+        Sol LeWitt
+      </span>
+      <span css={[ solStyles.titleAndYear ]}>
+        <span css={[ solStyles.title ]}>
+          {title},{' '}
+        </span>
+        <span css={[ solStyles.year ]}>
+          {year}
+        </span>
+      </span>
+      <span css={[ solStyles.medium ]}>
+        HTML Canvas
+      </span>
+    </h3>
+  </div>
+</div>
+  </Link>
   )
 }
 
